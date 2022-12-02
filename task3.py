@@ -1,25 +1,20 @@
-# TODO реализовать функцию to_csv_file
+# TODO написать функцию для получения списка уникальных целых чисел
 
-def to_csv_file( filename, headers, rows, delimiter = ',', new_line = '\n'):
-    f = open(filename, 'wt')
-    f.write(delimiter.join(headers)+new_line)
-    for line in rows:
-        f.write(delimiter.join(line)+new_line)
-    f.close()
+from random import randint
 
-OUTPUT_FILE = "output.csv"
-headers_list = ['longitude', 'latitude', 'housing_median_age', 'total_rooms', 'total_bedrooms', 'population', 'households', 'median_income', 'median_house_value']
-data = [
-    ['-122.050000', '37.370000', '27.000000', '3885.000000', '661.000000', '1537.000000', '606.000000', '6.608500', '344700.000000'],
-    ['-118.300000', '34.260000', '43.000000', '1510.000000', '310.000000', '809.000000', '277.000000', '3.599000', '176500.000000'],
-    ['-117.810000', '33.780000', '27.000000', '3589.000000', '507.000000', '1484.000000', '495.000000', '5.793400', '270500.000000'],
-    ['-118.360000', '33.820000', '28.000000', '67.000000', '15.000000', '49.000000', '11.000000', '6.135900', '330000.000000'],
-]
 
-# TODO вызвать функцию to_csv_file и записать данные в файл
+def Unique_list_numbers() -> list[int]:
+    length = 15
+    min_ = -10
+    max_ = 10
+    list_unique_num = []
+    while len(list_unique_num) != length:
+        rand_val = randint(min_, max_)
+        if rand_val not in list_unique_num:
+            list_unique_num.append(rand_val)
+    return list_unique_num
 
-to_csv_file( OUTPUT_FILE, headers_list, data, delimiter = ",", new_line = "\n")
 
-with open(OUTPUT_FILE) as output_x:
-    for line in output_x:
-        print(line, end="")
+list_unique_numbers = Unique_list_numbers()
+print(list_unique_numbers)
+print(len(list_unique_numbers) == len(set(list_unique_numbers)))
